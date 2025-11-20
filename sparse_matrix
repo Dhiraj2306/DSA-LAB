@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 struct node
 {
     int row,col,data;
-    struct node*next;
-    struct node*prev;
+    struct node *next;
+    struct node *prev;
 };
 typedef struct node *NODE;
-NODE insertend(NODE start,int row,int col, int item)
+
+NODE insertend(NODE start,int row,int col,int item)
 {
     NODE temp,cur;
     temp=(NODE)malloc(sizeof(struct node));
@@ -29,10 +31,10 @@ void display(NODE start)
 {
     NODE temp;
     if(start==NULL)
-        printf("\n the list is empty");
+        printf("\nList is Empty");
     else
     {
-        printf("\nROW\tCOL\tDATA\t");
+        printf("\nRow\tColumn\tData\n");
         temp=start;
         while(temp!=NULL)
         {
@@ -53,20 +55,21 @@ void displaymatrix(NODE start,int m,int n)
             {
                 printf("%d\t",temp->data);
                 temp=temp->next;
+            }
+            else
+                printf("0\t");
         }
-    else
-        printf("0\t");
-}
-printf("\n");
+        printf("\n");
     }
 }
+
 int main()
 {
     int i,j,m,n,item;
     NODE start=NULL;
-    printf("\n read order of matrix\n");
+    printf("\nEnter Order of Matrix:\n");
     scanf("%d%d",&m,&n);
-    printf("\n read elements\n");
+    printf("Enter elements:\n");
     for(i=1;i<=m;i++)
     {
         for(j=1;j<=n;j++)
@@ -76,8 +79,9 @@ int main()
                 start=insertend(start,i,j,item);
         }
     }
+    printf("\nData Fetched is:\n");
     display(start);
-    printf("\n sparse matrix is\n");
+    printf("\nSparse Matrix is:\n");
     displaymatrix(start,m,n);
     return 0;
 }
