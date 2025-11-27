@@ -59,7 +59,7 @@ void postorder(NODE root){
 
 int main(){
     NODE root=NULL;
-    int item,ch;
+    int item,ch,n;
     for(;;){
         printf("\n1.Insert\n2.PreOrder\n3.InOrder\n4.PostOrder\n5.Exit");
         printf("\nRead Choice:\n");
@@ -67,9 +67,14 @@ int main(){
         switch(ch){
 
             case 1:
-            printf("\nRead the item to be inserted:\n");
-            scanf("%d",&item);
-            root=bst(root,item);
+            printf("\nEnter the number of elements to be inserted : ");
+            scanf("%d", &n);
+            for (int i=1; i<=n; i++)
+            {
+                printf("\nRead %d item :\n", i);
+                scanf("%d",&item);
+                root=bst(root,item);
+            }
             break;
 
             case 2:
